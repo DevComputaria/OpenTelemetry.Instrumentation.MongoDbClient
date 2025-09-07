@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net6.0;netstandard2.0</TargetFrameworks>
+    <Description>MongoDbClient instrumentation for OpenTelemetry .NET</Description>
+    <PackageTags>$(PackageTags);MongoDbClient</PackageTags>
+    <MinVerTagPrefix>Instrumentation.MongoDbClient-</MinVerTagPrefix>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>OpenTelemetry.Instrumentation.MongoDb.Client</Title>
+    <Copyright>DevSecOps</Copyright>
+  </PropertyGroup>
+
+  <!-- Common dependencies -->
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver.Core" Version="2.19.0" />
+    <PackageReference Include="OpenTelemetry" Version="1.7.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+  </ItemGroup>
+
+  <!-- Specific to netstandard2.0 -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>

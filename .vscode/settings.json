@@ -1,0 +1,87 @@
+{
+    "github.copilot.chat.codeGeneration.instructions": [
+        {
+            "file": "./docs/code-style.md"
+        },
+        {
+            "file": "/docs/best-practices.md"
+        },
+        {
+            "file": "./docs/architecture.md"
+        }
+    ],
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "text": "Be extremely detailed with te file changes and the reason for the hange"
+        }
+    ],
+    "github.copilot.chat.codesearch.enabled": true,        
+    "github.copilot.chat.codesearch.suggestions.enabled": true,        
+    "github.copilot.chat.codesearch.suggestions.maxResults": 5,         
+    "github.copilot.chat.codesearch.suggestions.maxResultsPerFile": 5,      
+    "github.copilot.chat.codesearch.suggestions.maxResultsPerFileType": 5,  
+    "github.copilot.chat.codesearch.suggestions.maxResultsPerFileTypeAndFile": 5,   
+    "github.copilot.chat.codesearch.suggestions.maxResultsPerFileTypeAndFileType": 5,
+    "github.copilot.chat.codesearch.suggestions.maxResultsPerFileTypeAndFileTypeAndFile": 5,       
+    "github.copilot.chat.generateTests.codeLens": true,     
+    "github.copilot.chat.generateTests.codeLens.maxResults": 5,
+    "github.copilot.chat.testGeneration.instructions": [
+        {
+            "file": "./docs/.copilot-test-instructions.md"
+        },
+        {
+            "text": "Always try uniting related tests in a suite."
+        }
+    ],
+    "github.copilot.chat.useProjectTemplates": true,    
+    "github.copilot.chat.useProjectTemplates.maxResults": 5,            
+    "github.copilot.chat.useProjectTemplates.maxResultsPerFile": 5,     
+    "github.copilot.chat.useProjectTemplates.maxResultsPerFileType": 5, 
+    "github.copilot.chat.useProjectTemplates.maxResultsPerFileTypeAndFile": 5,      
+    "github.copilot.chat.useProjectTemplates.maxResultsPerFileTypeAndFileType": 5,      
+    "github.copilot.chat.useProjectTemplates.maxResultsPerFileTypeAndFileTypeAndFile": 5,      
+    "github.copilot.chat.useProjectTemplates.instructions": [
+        {
+            "file": "./docs/project-templates.md"
+        }
+    ],
+    "github.copilot.chat.useProjectTemplates.instructions.maxResults": 5,   
+    "github.copilot.chat.useProjectTemplates.instructions.maxResultsPerFile": 5,
+    "github.copilot.chat.useProjectTemplates.instructions.maxResultsPerFileType": 5,
+    "github.copilot.chat.useProjectTemplates.instructions.maxResultsPerFileTypeAndFile": 5,
+    "github.copilot.chat.useProjectTemplates.instructions.maxResultsPerFileTypeAndFileType": 5,
+    "github.copilot.chat.useProjectTemplates.instructions.maxResultsPerFileTypeAndFileTypeAndFile": 5,
+    "github.copilot.chat.useProjectTemplates.instructions.maxResultsPerFileTypeAndFileTypeAndFileType": 5,
+    "github.copilot.chat.useProjectTemplates.instructions.maxResultsPerFileTypeAndFileTypeAndFileTypeAndFile": 5,
+    "github.copilot.chat.agent.thinkingTool": true,
+    "github.copilot.chat.agent.thinkingTool.maxResults": 5,
+    "github.copilot.chat.agent.thinkingTool.maxResultsPerFile": 5,
+    "github.copilot.chat.agent.thinkingTool.maxResultsPerFileType": 5,
+    "github.copilot.chat.agent.runTasks": true,
+    "github.copilot.chat.agent.runTasks.maxResults": 5,
+    "github.copilot.chat.agent.runTasks.maxResultsPerFile": 5,
+    "github.copilot.chat.agent.runTasks.maxResultsPerFileType": 5,
+    "github.copilot.chat.edits.suggestRelatedFilesForTests": true,
+    "github.copilot.chat.edits.suggestRelatedFilesForTests.maxResults": 5,
+    "github.copilot.chat.edits.suggestRelatedFilesForTests.maxResultsPerFile": 5,
+    "github.copilot.chat.edits.suggestRelatedFilesForTests.maxResultsPerFileType": 5,
+    "github.copilot.advanced": {
+        "temperature": 0.2,
+        "maxTokens": 1000,
+        "topP": 0.9,
+        "frequencyPenalty": 0.5,
+        "presencePenalty": 0.6
+    },
+    "github.copilot.chat.enable": true,
+    "github.copilot.chat.enableExperimental": true,
+    "github.copilot.chat.enableExperimentalChat": true,
+    "github.copilot.editor.enableCodeActions": true,
+    "github.copilot.renameSuggestions.triggerAutomatically": true,
+    "chat.promptFiles": true, 
+    "chat.promptFilesLocations": {
+        "./.prompt": true
+    },
+    "chat.mcp.discovery.enabled": true, 
+    "chat.mcp.discovery.maxResults": 5,
+    "github.copilot.chat.editor.temporalContext.enabled": false
+}
