@@ -1,35 +1,39 @@
 using System;
 using Xunit;
+using OpenTelemetry.Instrumentation.MongoDbClient;
 
-public class MongoDbClientInstrumentationOptionsTests
+namespace OpenTelemetry.Instrumentation.MongoDbClient.Tests
 {
-    [Fact]
-    public void DefaultOptions_ShouldBeInitializedCorrectly()
+    public class MongoDbClientInstrumentationOptionsTests
     {
-        // Arrange
-        var options = new MongoDbClientInstrumentationOptions();
-
-        // Act & Assert
-        Assert.False(options.EnableSomeFeature);
-        Assert.Equal("default-value", options.SomeSetting);
-    }
-
-    [Fact]
-    public void SettingOptions_ShouldBeSetCorrectly()
-    {
-        // Arrange
-        var options = new MongoDbClientInstrumentationOptions
+        [Fact]
+        public void DefaultOptions_ShouldBeInitializedCorrectly()
         {
-            EnableSomeFeature = true,
-            SomeSetting = "custom-value"
-        };
+            // Arrange
+            var options = new MongoDbClientTraceInstrumentationOptions();
 
-        // Act
-        var isFeatureEnabled = options.EnableSomeFeature;
-        var settingValue = options.SomeSetting;
+            // Act & Assert
+            Assert.False(options.CaptureCommandText);
+            Assert.False(options.RecordException);
+        }
 
-        // Assert
-        Assert.True(isFeatureEnabled);
-        Assert.Equal("custom-value", settingValue);
+        [Fact]
+        public void SettingOptions_ShouldBeSetCorrectly()
+        {
+            // Arrange
+            var options = new MongoDbClientTraceInstrumentationOptions
+            {
+                CaptureCommandText = true,
+                RecordException = true
+            };
+
+            // Act
+            var isCaptureEnabled = options.CaptureCommandText;
+            var isRecordEnabled = options.RecordException;
+
+            // Assert
+            Assert.True(isCaptureEnabled);
+            Assert.True(isRecordEnabled);
+        }
     }
 }

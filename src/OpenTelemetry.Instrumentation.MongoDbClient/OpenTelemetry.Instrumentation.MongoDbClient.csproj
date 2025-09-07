@@ -11,6 +11,8 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>OpenTelemetry.Instrumentation.MongoDb.Client</Title>
     <Copyright>DevSecOps</Copyright>
+    <!-- Disable auto-generated assembly attributes to avoid conflicts with AssemblyInfo.cs -->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <!-- Common dependencies -->

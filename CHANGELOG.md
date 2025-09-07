@@ -5,6 +5,49 @@ All notable changes to the OpenTelemetry.Instrumentation.MongoDbClient project w
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2025-09-07
+
+### Fixed
+
+- **Build System Issues:**
+  - Fixed duplicate assembly attributes error by disabling auto-generated assembly info (`GenerateAssemblyInfo=false`)
+  - Resolved MSBuild conflicts between manual `AssemblyInfo.cs` and SDK-style project generation
+  - Successfully building for all target frameworks: .NET 8.0, .NET 6.0, and .NET Standard 2.0
+
+- **Test Infrastructure:**
+  - Simplified mock implementations to avoid complex MongoDB interface implementation requirements
+  - Updated test classes to use correct instrumentation options (`MongoDbClientTraceInstrumentationOptions`)
+  - Fixed namespace issues in test files
+  - Removed incomplete `IMongoClient`, `IMongoDatabase`, and `IMongoCollection<T>` implementations from mocks
+
+- **Project Structure:**
+  - Corrected test project dependencies and references
+  - Fixed syntax errors in test files (removed duplicate closing braces)
+
+### Added
+
+- **Documentation:**
+  - Created comprehensive compliance analysis document (`COMPLIANCE_TASKS.md`)
+  - Documented 12 prioritized tasks for OpenTelemetry specification compliance
+  - Added roadmap for implementing OpenTelemetry Specification v1.48.0 and Semantic Conventions v1.37.0
+
+### Known Issues
+
+- **OpenTelemetry Compliance:** 
+  - Span names do not follow current MongoDB semantic conventions (should be `"{operation} {collection}"` format)
+  - Using deprecated semantic convention attributes that need updating to stable v1.37.0 attributes
+  - Missing implementation of real MongoDB event hooks (currently using reflection stubs)
+  - Missing support for `OTEL_SEMCONV_STABILITY_OPT_IN` environment variable
+
+- **Dependencies:**
+  - Sample project has warning about OpenTelemetry.Instrumentation.Http 1.7.0 vulnerability (GHSA-vh2m-22xx-q94f)
+
+### Technical Debt
+
+- Unit tests need MongoDB TestContainers or in-memory MongoDB implementation for realistic testing
+- Mock classes should be replaced with proper test doubles or integration tests
+- MongoDB event subscription implementation needs to be completed with actual EventSubscriber
+
 ## [1.0.1] - 2025-04-24
 
 ### Fixed

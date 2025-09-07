@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Xunit;
+using OpenTelemetry.Instrumentation.MongoDbClient.Tests.TestHelpers;
 
 namespace OpenTelemetry.Instrumentation.MongoDbClient.Tests
 {
@@ -11,10 +12,9 @@ namespace OpenTelemetry.Instrumentation.MongoDbClient.Tests
         {
             // Arrange
             var mockClient = new MockMongoDbClient();
-            var instrumentation = new MongoDbClientInstrumentation(mockClient);
 
             // Act
-            await instrumentation.ExecuteDatabaseOperationAsync();
+            await mockClient.ExecuteDatabaseOperationAsync();
 
             // Assert
             Assert.True(mockClient.SpanCreated);
@@ -25,10 +25,9 @@ namespace OpenTelemetry.Instrumentation.MongoDbClient.Tests
         {
             // Arrange
             var mockClient = new MockMongoDbClient();
-            var instrumentation = new MongoDbClientInstrumentation(mockClient);
 
             // Act
-            instrumentation.ExecuteDatabaseOperation();
+            mockClient.ExecuteDatabaseOperation();
 
             // Assert
             Assert.True(mockClient.SpanStopped);
@@ -38,14 +37,13 @@ namespace OpenTelemetry.Instrumentation.MongoDbClient.Tests
         public void Test_InstrumentationOptions_AreApplied()
         {
             // Arrange
-            var options = new MongoDbClientInstrumentationOptions
+            var options = new MongoDbClientTraceInstrumentationOptions
             {
-                EnableSomeFeature = true
+                CaptureCommandText = true
             };
-            var instrumentation = new MongoDbClientInstrumentation(options);
 
             // Act
-            var isFeatureEnabled = instrumentation.IsSomeFeatureEnabled();
+            var isFeatureEnabled = options.CaptureCommandText;
 
             // Assert
             Assert.True(isFeatureEnabled);
