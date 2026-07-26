@@ -1,10 +1,13 @@
 {
     "github.copilot.chat.codeGeneration.instructions": [
         {
+            "file": "./.github/instructions/coding.md"
+        },
+        {
             "file": "./docs/code-style.md"
         },
         {
-            "file": "/docs/best-practices.md"
+            "file": "./docs/best-practices.md"
         },
         {
             "file": "./docs/architecture.md"
@@ -12,7 +15,7 @@
     ],
     "github.copilot.chat.commitMessageGeneration.instructions": [
         {
-            "text": "Be extremely detailed with te file changes and the reason for the hange"
+            "file": "./.github/prompts/commit-prompt.md"
         }
     ],
     "github.copilot.chat.codesearch.enabled": true,        
@@ -26,6 +29,9 @@
     "github.copilot.chat.generateTests.codeLens": true,     
     "github.copilot.chat.generateTests.codeLens.maxResults": 5,
     "github.copilot.chat.testGeneration.instructions": [
+        {
+            "file": "./.github/instructions/testing.md"
+        },
         {
             "file": "./docs/.copilot-test-instructions.md"
         },
