@@ -5,6 +5,7 @@
     <Authors>DevComputaria</Authors>
     <Company>DevComputaria</Company>
     <Copyright>Copyright 2026 DevComputaria</Copyright>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)../artifacts/package/release</PackageOutputPath>
     <PackageTags>OpenTelemetry;Instrumentation;MongoDB</PackageTags>
     <MinVerTagPrefix>Instrumentation.MongoDbClient-</MinVerTagPrefix>
   </PropertyGroup>
