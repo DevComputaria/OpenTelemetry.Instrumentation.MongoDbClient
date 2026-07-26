@@ -44,27 +44,7 @@ jobs:
 
       - name: Write SARIF summary to Action output
         shell: bash
-        run: |
-          {
-            echo "## OSSF Scorecard Results"
-            echo ""
-            echo '```'
-            echo "Tool: $(jq -r '.runs[0].tool.driver.name // "N/A"' results.sarif)"
-            echo "Version: $(jq -r '.runs[0].tool.driver.semanticVersion // "N/A"' results.sarif)"
-            echo ""
-            echo "Total checks: $(jq '.runs[0].results | length' results.sarif)"
-            echo ""
-            printf "%-30s %-8s %s\n" "Check" "Score" "Reason"
-            printf "%-30s %-8s %s\n" "-----" "-----" "------"
-            jq -r '.runs[0].results[] | [
-              .ruleId,
-              (try (.properties.score | tostring + "/10") catch "N/A"),
-              (.message.text | split("\n")[0])
-            ] | @tsv' results.sarif | while IFS=$'\t' read -r check score reason; do
-              printf "%-30s %-8s %s\n" "$check" "$score" "$reason"
-            done
-            echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
+        run: python3 build/format-scorecard-summary.py results.sarif
 
       - name: Upload artifacts
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
