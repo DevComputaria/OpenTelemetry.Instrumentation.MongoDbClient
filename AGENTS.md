@@ -11,7 +11,8 @@ Auto-instrumentation library for MongoDB client operations using OpenTelemetry. 
 ├── .github/                          # GitHub workflows, instructions, prompts
 │   ├── workflows/                    # CI/CD pipelines
 │   ├── instructions/                 # Copilot/agent instructions
-│   └── prompts/                      # Agent prompt definitions
+│   ├── prompts/                      # Agent prompt definitions
+│   └── agents/                       # Agent definitions (project + OTel specialist)
 ├── src/
 │   └── OpenTelemetry.Instrumentation.MongoDbClient/  # Library source
 │       ├── Implementation/           # Internal implementation
@@ -98,3 +99,30 @@ Auto-instrumentation library for MongoDB client operations using OpenTelemetry. 
 - `OpenTelemetry` 1.7.0
 - `MongoDB.Driver.Core` 2.19.0
 - `MinVer` 4.3.0 (for versioning)
+
+## Agents
+
+### Project Agent
+File: `.github/agents/project-agent.md`
+Context: Full project details — architecture, build commands, code patterns, versioning, deployment.
+
+### OpenTelemetry Specialist Agent
+File: `.github/agents/otel-specialist.md`
+Context: Deep knowledge of OpenTelemetry .NET SDK, API, semantic conventions, exporters, troubleshooting.
+
+### Combined Skill Agent
+File: `.github/instructions/skill-agent.md`
+Context: Merged expertise for coding agents working on this project — code generation patterns, anti-patterns, troubleshooting.
+
+## OpenTelemetry .NET Official Docs
+
+- [Main docs](https://opentelemetry.io/docs/languages/dotnet/)
+- [Getting Started](https://opentelemetry.io/docs/languages/dotnet/getting-started/)
+- [Instrumentation](https://opentelemetry.io/docs/languages/dotnet/instrumentation/)
+- [Instrumentation Libraries](https://opentelemetry.io/docs/languages/dotnet/libraries/)
+- [Exporters](https://opentelemetry.io/docs/languages/dotnet/exporters/)
+- [Troubleshooting](https://opentelemetry.io/docs/languages/dotnet/troubleshooting/)
+- [Resources](https://opentelemetry.io/docs/languages/dotnet/resources/)
+- [Sampling](https://opentelemetry.io/docs/languages/dotnet/sampling/)
+- [Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/)
+

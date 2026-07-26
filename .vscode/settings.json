@@ -88,6 +88,7 @@
         "./.prompt": true,
         "./.github/prompts": true,
         "./.github/instructions": true,
+        "./.github/agents": true,
         "./docs": true
     },
     "chat.mcp.discovery.enabled": true, 
