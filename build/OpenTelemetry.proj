@@ -2,8 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <ArtifactsPath>$(MSBuildThisFileDirectory)..\artifacts</ArtifactsPath>
-    <PackageOutputPath>$(ArtifactsPath)\package\release</PackageOutputPath>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)..\artifacts\package\release</PackageOutputPath>
     <PackageValidationEnabled>$(EnablePackageValidation)</PackageValidationEnabled>
     <EnablePackageValidation>$(EnablePackageValidation)</EnablePackageValidation>
     <ExposeExperimentalFeatures>$(ExposeExperimentalFeatures)</ExposeExperimentalFeatures>
