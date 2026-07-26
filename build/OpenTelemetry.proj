@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.Build.NoTargets/3.7.56">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ArtifactsPath>$(MSBuildThisFileDirectory)..\artifacts</ArtifactsPath>
+    <PackageOutputPath>$(ArtifactsPath)\package\release</PackageOutputPath>
+    <PackageValidationEnabled>$(EnablePackageValidation)</PackageValidationEnabled>
+    <EnablePackageValidation>$(EnablePackageValidation)</EnablePackageValidation>
+    <ExposeExperimentalFeatures>$(ExposeExperimentalFeatures)</ExposeExperimentalFeatures>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\OpenTelemetry.Instrumentation.MongoDbClient\OpenTelemetry.Instrumentation.MongoDbClient.csproj" />
+  </ItemGroup>
+
+</Project>
