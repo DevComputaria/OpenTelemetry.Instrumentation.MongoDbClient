@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using Xunit;
 using OpenTelemetry.Instrumentation.MongoDbClient.Tests.TestHelpers;

@@ -3,7 +3,6 @@
 
 using System;
 using System.Diagnostics;
-using MongoDB.Driver.Core.Events;
 
 namespace OpenTelemetry.Instrumentation.MongoDbClient;
 

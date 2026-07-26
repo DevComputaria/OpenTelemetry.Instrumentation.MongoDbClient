@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using OpenTelemetry.Instrumentation.MongoDbClient;
 using OpenTelemetry.Internal;
-using OpenTelemetry.Trace;
 
 namespace OpenTelemetry.Trace
 {

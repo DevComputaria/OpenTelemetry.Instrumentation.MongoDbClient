@@ -1,6 +1,4 @@
-using System;
 using System.Diagnostics;
-using OpenTelemetry.Trace;
 
 namespace OpenTelemetry.Instrumentation.MongoDbClient.Implementation
 {

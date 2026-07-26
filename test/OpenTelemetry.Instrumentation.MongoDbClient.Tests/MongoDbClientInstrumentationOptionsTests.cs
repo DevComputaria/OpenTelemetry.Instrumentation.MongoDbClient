@@ -1,6 +1,4 @@
-using System;
 using Xunit;
-using OpenTelemetry.Instrumentation.MongoDbClient;
 
 namespace OpenTelemetry.Instrumentation.MongoDbClient.Tests
 {
