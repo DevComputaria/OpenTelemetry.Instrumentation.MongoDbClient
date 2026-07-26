@@ -5,7 +5,36 @@ All notable changes to the OpenTelemetry.Instrumentation.MongoDbClient project w
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2025-09-07
+## [Unreleased] - 2026-07-26
+
+### Added
+
+- **Project Restructuring:**
+  - Reorganized directory structure to follow `src/`, `test/`, `examples/`, `build/` layout
+  - Added `Directory.Build.props` (root, src, test, examples) with inheritance chain
+  - Added `Directory.Packages.props` for centralized package version management
+  - Added `build/Common.props`, `build/Common.nonprod.props` with rulesets and StyleCop
+  - Moved test projects from `src/` to `test/` and sample from `samples/` to `examples/`
+  - Updated `.sln` file with new project paths
+
+- **CI/CD Pipeline:**
+  - Added GitHub Actions `ci.yml` with `dorny/paths-filter` for change detection
+  - Added reusable `Component.BuildTest.yml` workflow (build, test, code coverage)
+  - Added `dotnet-format.yml` for linting
+  - Added `ossf-scorecard.yml` with OSSF Scorecard + SARIF summary script
+  - Added `package-validation.yml` for NuGet pack and validation
+  - Updated `dependabot.yml` with nuget and github-actions ecosystem
+
+- **Docker Compose (Observability Stack):**
+  - Added `docker-compose.yml` with MongoDB, Elasticsearch, Kibana, APM Server, OTel Collector
+  - Added `otel-collector-config.yml` for OTLP gRPC to HTTP bridging
+  - Added `apm-server.yml` with preconfigured credentials
+  - Added documentation at `docs/APM-DATA-COMPILATION.md`
+
+- **Build Infrastructure:**
+  - Added `build/OpenTelemetry.proj` for NuGet packaging
+  - Added `build/format-scorecard-summary.py` for SARIF summary extraction
+  - Updated `Makefile` with infra and run commands
 
 ### Fixed
 
@@ -14,7 +43,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Resolved MSBuild conflicts between manual `AssemblyInfo.cs` and SDK-style project generation
   - Successfully building for all target frameworks: .NET 8.0, .NET 6.0, and .NET Standard 2.0
 
+- **Code Quality:**
+  - Removed unnecessary using directives (IDE0005) across 9 files
+
 - **Test Infrastructure:**
+  - Removed incompatible `GitHubActions` logger (incompatible with Microsoft.Testing.Platform in .NET SDK 10)
   - Simplified mock implementations to avoid complex MongoDB interface implementation requirements
   - Updated test classes to use correct instrumentation options (`MongoDbClientTraceInstrumentationOptions`)
   - Fixed namespace issues in test files
@@ -23,13 +56,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Project Structure:**
   - Corrected test project dependencies and references
   - Fixed syntax errors in test files (removed duplicate closing braces)
-
-### Added
-
-- **Documentation:**
-  - Created comprehensive compliance analysis document (`COMPLIANCE_TASKS.md`)
-  - Documented 12 prioritized tasks for OpenTelemetry specification compliance
-  - Added roadmap for implementing OpenTelemetry Specification v1.48.0 and Semantic Conventions v1.37.0
 
 ### Known Issues
 

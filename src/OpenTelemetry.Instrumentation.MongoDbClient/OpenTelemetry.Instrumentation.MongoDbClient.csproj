@@ -6,7 +6,7 @@
     <Description>MongoDbClient instrumentation for OpenTelemetry .NET</Description>
     <PackageTags>$(PackageTags);MongoDbClient</PackageTags>
     <Title>OpenTelemetry.Instrumentation.MongoDbClient</Title>
-    <Copyright>Copyright The OpenTelemetry Authors</Copyright>
+    <Copyright>Copyright 2026 DevComputaria</Copyright>
     <PackageProjectUrl>https://opentelemetry.io/</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <MinVerTagPrefix>Instrumentation.MongoDbClient-</MinVerTagPrefix>
