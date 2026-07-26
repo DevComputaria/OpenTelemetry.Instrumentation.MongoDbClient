@@ -4,9 +4,9 @@ VisualStudioVersion = 17.0.31913.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTelemetry.Instrumentation.MongoDbClient", "src\OpenTelemetry.Instrumentation.MongoDbClient\OpenTelemetry.Instrumentation.MongoDbClient.csproj", "{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTelemetry.Instrumentation.MongoDbClient.Tests", "src\OpenTelemetry.Instrumentation.MongoDbClient.Tests\OpenTelemetry.Instrumentation.MongoDbClient.Tests.csproj", "{E16A49EA-E8D9-4DAD-8FED-BA0A82DE87BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTelemetry.Instrumentation.MongoDbClient.Tests", "test\OpenTelemetry.Instrumentation.MongoDbClient.Tests\OpenTelemetry.Instrumentation.MongoDbClient.Tests.csproj", "{E16A49EA-E8D9-4DAD-8FED-BA0A82DE87BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDbClientSample", "samples\MongoDbClientSample\MongoDbClientSample.csproj", "{678BED52-9855-4A1E-811E-4C58E02BBDB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDbClientSample", "examples\MongoDbClientSample\MongoDbClientSample.csproj", "{678BED52-9855-4A1E-811E-4C58E02BBDB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

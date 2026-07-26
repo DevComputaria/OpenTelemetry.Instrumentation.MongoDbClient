@@ -1,22 +1,14 @@
 using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using OpenTelemetry.Metrics;
+using OpenTelemetry.Instrumentation.MongoDbClient.Implementation;
 using OpenTelemetry.Internal;
+using OpenTelemetry.Metrics;
 
 namespace OpenTelemetry.Instrumentation.MongoDbClient
 {
-    /// <summary>
-    /// Extension methods for setting up MongoDB client instrumentation.
-    /// </summary>
     public static class MeterProviderBuilderExtensions
     {
-        /// <summary>
-        /// Adds MongoDB client metrics instrumentation to the <see cref="MeterProviderBuilder"/>.
-        /// </summary>
-        /// <param name="builder">The <see cref="MeterProviderBuilder"/> to add instrumentation to.</param>
-        /// <param name="configure">Optional configuration options for the instrumentation.</param>
-        /// <returns>The <see cref="MeterProviderBuilder"/> for chaining.</returns>
         public static MeterProviderBuilder AddMongoDbClientInstrumentation(
             this MeterProviderBuilder builder,
             Action<MongoDbClientMetricsInstrumentationOptions>? configure = null)
@@ -29,7 +21,12 @@ namespace OpenTelemetry.Instrumentation.MongoDbClient
                     services.Configure(configure));
             }
 
-            // Add MongoDB client metrics
+            builder.AddInstrumentation(sp =>
+            {
+                var options = sp.GetRequiredService<IOptionsMonitor<MongoDbClientMetricsInstrumentationOptions>>().CurrentValue;
+                return new MongoDbClientMetricsInstrumentation();
+            });
+
             builder.AddMeter("OpenTelemetry.Instrumentation.MongoDbClient");
 
             return builder;

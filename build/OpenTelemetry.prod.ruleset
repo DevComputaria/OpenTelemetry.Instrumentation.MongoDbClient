@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="OpenTelemetry Production Rules" Description="Code analysis rules for production code." ToolsVersion="15.0">
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp">
+    <Rule Id="IDE0005" Action="Warning" /> <!-- Remove unnecessary using directives -->
+    <Rule Id="IDE0007" Action="Info" />    <!-- Use var -->
+    <Rule Id="IDE0008" Action="Info" />    <!-- Use explicit type -->
+    <Rule Id="IDE0011" Action="Info" />    <!-- Add braces -->
+    <Rule Id="IDE0037" Action="Info" />    <!-- Use inferred member name -->
+    <Rule Id="IDE0044" Action="Info" />    <!-- Add readonly modifier -->
+    <Rule Id="IDE0055" Action="Info" />    <!-- Fix formatting -->
+  </Rules>
+</RuleSet>

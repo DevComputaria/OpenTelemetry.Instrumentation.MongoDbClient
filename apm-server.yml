@@ -1,0 +1,35 @@
+apm-server:
+  host: "0.0.0.0:8200"
+  auth:
+    anonymous:
+      enabled: true
+      allow_agent: ["*"]
+      allow_service: ["*"]
+  aggr:
+    enabled: true
+  agent.config:
+    elasticsearch:
+      hosts: ["elasticsearch:9200"]
+      username: elastic
+      password: changeme
+
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
+  username: elastic
+  password: changeme
+
+setup.kibana:
+  host: "kibana:5601"
+
+logging:
+  to_files: true
+  files:
+    path: /usr/share/apm-server/logs
+    name: apm-server
+    keepfiles: 7
+    permissions: 0600
+  level: info
+
+xpack:
+  security:
+    enabled: true

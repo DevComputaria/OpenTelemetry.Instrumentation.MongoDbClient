@@ -1,16 +1,5 @@
-// Copyright The OpenTelemetry Authors
-// SPDX-License-Identifier: Apache-2.0
-
 namespace OpenTelemetry.Instrumentation.MongoDbClient.Implementation
 {
-    /// <summary>
-    /// Constants for semantic attribute names used by OpenTelemetry instrumentation following
-    /// the OpenTelemetry semantic conventions.
-    /// </summary>
-    /// <remarks>
-    /// See the OpenTelemetry specification for standard attributes:
-    /// https://github.com/open-telemetry/semantic-conventions
-    /// </remarks>
     internal static class SemanticConventions
     {
         // General attribute constants
@@ -19,7 +8,7 @@ namespace OpenTelemetry.Instrumentation.MongoDbClient.Implementation
         public const string AttributeServiceVersion = "service.version";
         public const string AttributeServiceInstanceId = "service.instance.id";
 
-        // Net attributes
+        // Old (deprecated) net.* attributes
         public const string AttributeNetTransport = "net.transport";
         public const string AttributeNetPeerIp = "net.peer.ip";
         public const string AttributeNetPeerName = "net.peer.name";
@@ -27,6 +16,14 @@ namespace OpenTelemetry.Instrumentation.MongoDbClient.Implementation
         public const string AttributeNetHostIp = "net.host.ip";
         public const string AttributeNetHostName = "net.host.name";
         public const string AttributeNetHostPort = "net.host.port";
+
+        // New stable server.* attributes (v1.28.0+)
+        public const string AttributeServerAddress = "server.address";
+        public const string AttributeServerPort = "server.port";
+
+        // New stable network.* attributes
+        public const string AttributeNetworkPeerAddress = "network.peer.address";
+        public const string AttributeNetworkPeerPort = "network.peer.port";
 
         // HTTP attributes
         public const string AttributeHttpMethod = "http.method";
@@ -42,7 +39,7 @@ namespace OpenTelemetry.Instrumentation.MongoDbClient.Implementation
         public const string AttributeHttpRoute = "http.route";
         public const string AttributeHttpClientIp = "http.client_ip";
 
-        // Database attributes
+        // Database attributes — old (deprecated)
         public const string AttributeDbSystem = "db.system";
         public const string AttributeDbName = "db.name";
         public const string AttributeDbConnection = "db.connection_string";
@@ -58,10 +55,25 @@ namespace OpenTelemetry.Instrumentation.MongoDbClient.Implementation
         public const string AttributeDbMongoDbCollection = "db.mongodb.collection";
         public const string AttributeDbRedisDatabaseIndex = "db.redis.database_index";
 
+        // Database attributes — new stable (v1.28.0+)
+        public const string AttributeDbSystemName = "db.system.name";
+        public const string AttributeDbNamespace = "db.namespace";
+        public const string AttributeDbOperationName = "db.operation.name";
+        public const string AttributeDbCollectionName = "db.collection.name";
+        public const string AttributeDbQueryText = "db.query.text";
+        public const string AttributeDbQuerySummary = "db.query.summary";
+        public const string AttributeDbResponseStatusCode = "db.response.status_code";
+        public const string AttributeDbOperationBatchSize = "db.operation.batch.size";
+
         // Exception attributes
         public const string AttributeExceptionType = "exception.type";
         public const string AttributeExceptionMessage = "exception.message";
         public const string AttributeExceptionStacktrace = "exception.stacktrace";
+
+        // Error attributes
+        public const string AttributeErrorType = "error.type";
+        public const string AttributeErrorMessage = "error.message";
+        public const string AttributeErrorStacktrace = "error.stacktrace";
 
         // Messaging attributes
         public const string AttributeMessagingSystem = "messaging.system";
@@ -92,10 +104,5 @@ namespace OpenTelemetry.Instrumentation.MongoDbClient.Implementation
         public const string AttributeFaasDocumentName = "faas.document.name";
         public const string AttributeFaasTime = "faas.time";
         public const string AttributeFaasCron = "faas.cron";
-
-        // Error attributes
-        public const string AttributeErrorType = "error.type";
-        public const string AttributeErrorMessage = "error.message";
-        public const string AttributeErrorStacktrace = "error.stacktrace";
     }
 }

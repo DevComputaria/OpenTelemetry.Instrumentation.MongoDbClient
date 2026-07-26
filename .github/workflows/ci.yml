@@ -1,0 +1,28 @@
+# CI workflow for OpenTelemetry.Instrumentation.MongoDbClient
+# Builds, tests, and reports code coverage on push/PR to main.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  merge_group:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    name: Build & Test
+    uses: ./.github/workflows/Component.BuildTest.yml
+    with:
+      project-name: test/OpenTelemetry.Instrumentation.MongoDbClient.Tests
+      code-cov-name: MongoDbClient
+      code-cov-prefix: unittests
+      trigger: ${{ github.event_name }}
+      os-list: '[ "ubuntu-24.04", "windows-2025" ]'
+      tfm-list: '[ "net8.0" ]'
+    secrets: inherit

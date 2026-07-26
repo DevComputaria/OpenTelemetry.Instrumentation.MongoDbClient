@@ -1,0 +1,5 @@
+<Project>
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)OpenTelemetry.test.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+</Project>

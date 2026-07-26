@@ -1,0 +1,101 @@
+version: "3.9"
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: otel-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    healthcheck:
+      test: mongosh --eval "db.adminCommand('ping')" --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - apm-network
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+    container_name: otel-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=true
+      - xpack.security.enrollment.enabled=false
+      - xpack.security.authc.api_key.enabled=true
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - cluster.name=opentelemetry-cluster
+      - ELASTIC_PASSWORD=changeme
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: curl -s -u elastic:changeme http://localhost:9200/_cluster/health | grep -q '"status":"green\|yellow"'
+      interval: 15s
+      timeout: 10s
+      retries: 10
+    networks:
+      - apm-network
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.15.0
+    container_name: otel-kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=kibana-user
+      - ELASTICSEARCH_PASSWORD=kibana123
+      - XPACK_SECURITY_ENABLED=true
+    ports:
+      - "5601:5601"
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    healthcheck:
+      test: curl -s http://localhost:5601/api/status | grep -q '"level":"available"'
+      interval: 15s
+      timeout: 10s
+      retries: 10
+    networks:
+      - apm-network
+
+  apm-server:
+    image: docker.elastic.co/apm/apm-server:8.15.0
+    container_name: otel-apm-server
+    environment:
+      - BEAT_STRICT_PERMS=false
+    volumes:
+      - ./apm-server.yml:/usr/share/apm-server/apm-server.yml
+    ports:
+      - "8200:8200"
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      kibana:
+        condition: service_healthy
+    networks:
+      - apm-network
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.111.0
+    container_name: otel-collector
+    command: ["--config=/etc/otel-collector-config.yml"]
+    volumes:
+      - ./otel-collector-config.yml:/etc/otel-collector-config.yml
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+    depends_on:
+      apm-server:
+        condition: service_started
+    networks:
+      - apm-network
+
+volumes:
+  mongodb_data:
+  elasticsearch_data:
+
+networks:
+  apm-network:
+    driver: bridge

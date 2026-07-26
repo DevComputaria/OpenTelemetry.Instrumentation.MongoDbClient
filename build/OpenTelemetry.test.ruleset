@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="OpenTelemetry Test Rules" Description="Code analysis rules for test code." ToolsVersion="15.0">
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp">
+    <Rule Id="IDE0005" Action="Warning" /> <!-- Remove unnecessary using directives -->
+    <Rule Id="IDE0011" Action="Info" />    <!-- Add braces -->
+  </Rules>
+</RuleSet>

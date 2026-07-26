@@ -1,32 +1,26 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)../../build/Common.props" />
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;netstandard2.0</TargetFrameworks>
     <Description>MongoDbClient instrumentation for OpenTelemetry .NET</Description>
     <PackageTags>$(PackageTags);MongoDbClient</PackageTags>
+    <Title>OpenTelemetry.Instrumentation.MongoDbClient</Title>
+    <Copyright>Copyright The OpenTelemetry Authors</Copyright>
+    <PackageProjectUrl>https://opentelemetry.io/</PackageProjectUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <MinVerTagPrefix>Instrumentation.MongoDbClient-</MinVerTagPrefix>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>disable</ImplicitUsings>
-    <LangVersion>latest</LangVersion>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>OpenTelemetry.Instrumentation.MongoDb.Client</Title>
-    <Copyright>DevSecOps</Copyright>
-    <!-- Disable auto-generated assembly attributes to avoid conflicts with AssemblyInfo.cs -->
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
-  <!-- Common dependencies -->
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver.Core" Version="2.19.0" />
-    <PackageReference Include="OpenTelemetry" Version="1.7.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.0" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="MongoDB.Driver.Core" />
+    <PackageReference Include="OpenTelemetry" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+    <PackageReference Include="Microsoft.CSharp" />
   </ItemGroup>
 
-  <!-- Specific to netstandard2.0 -->
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" />
   </ItemGroup>
-
 </Project>
