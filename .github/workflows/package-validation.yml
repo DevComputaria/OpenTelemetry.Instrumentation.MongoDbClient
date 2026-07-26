@@ -32,8 +32,11 @@ jobs:
           6.0.x
           8.0.x
 
+    - name: dotnet build
+      run: dotnet build ./src/OpenTelemetry.Instrumentation.MongoDbClient --configuration Release
+
     - name: dotnet pack
-      run: dotnet pack ./src/OpenTelemetry.Instrumentation.MongoDbClient --configuration Release /p:EnablePackageValidation=true /p:ExposeExperimentalFeatures=false /p:RunningDotNetPack=true
+      run: dotnet pack ./src/OpenTelemetry.Instrumentation.MongoDbClient --configuration Release --no-build /p:EnablePackageValidation=true /p:ExposeExperimentalFeatures=false /p:RunningDotNetPack=true
       env:
         SOURCE_DATE_EPOCH: ${{ steps.get-commit-timestamp.outputs.epoch }}
 
@@ -69,8 +72,11 @@ jobs:
           6.0.x
           8.0.x
 
+    - name: dotnet build
+      run: dotnet build ./src/OpenTelemetry.Instrumentation.MongoDbClient --configuration Release
+
     - name: dotnet pack
-      run: dotnet pack ./src/OpenTelemetry.Instrumentation.MongoDbClient --configuration Release /p:EnablePackageValidation=true /p:ExposeExperimentalFeatures=true /p:RunningDotNetPack=true
+      run: dotnet pack ./src/OpenTelemetry.Instrumentation.MongoDbClient --configuration Release --no-build /p:EnablePackageValidation=true /p:ExposeExperimentalFeatures=true /p:RunningDotNetPack=true
       env:
         SOURCE_DATE_EPOCH: ${{ steps.get-commit-timestamp.outputs.epoch }}
 
