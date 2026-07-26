@@ -7,6 +7,8 @@
     <Copyright>Copyright 2026 DevComputaria</Copyright>
     <PackageOutputPath>$(MSBuildThisFileDirectory)../artifacts/package/release</PackageOutputPath>
     <PackageTags>OpenTelemetry;Instrumentation;MongoDB</PackageTags>
+    <RepositoryUrl>https://github.com/DevComputaria/OpenTelemetry.Instrumentation.MongoDbClient</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <MinVerTagPrefix>Instrumentation.MongoDbClient-</MinVerTagPrefix>
   </PropertyGroup>
 </Project>

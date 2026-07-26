@@ -5,6 +5,7 @@ on:
 
 permissions:
   contents: read
+  packages: write
 
 jobs:
   run-package-validation-stable:
@@ -46,6 +47,12 @@ jobs:
         name: packages-stable
         path: ./artifacts/package/release
         if-no-files-found: error
+
+    - name: Add GitHub NuGet source
+      run: dotnet nuget add source --username DevComputaria --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/DevComputaria/index.json"
+
+    - name: Push package to GitHub Packages
+      run: dotnet nuget push "./artifacts/package/release/*.nupkg" --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
 
   run-package-validation-experimental:
     name: Validate packages (experimental)
