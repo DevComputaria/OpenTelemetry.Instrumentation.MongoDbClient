@@ -1,5 +1,5 @@
 # CI workflow for OpenTelemetry.Instrumentation.MongoDbClient
-# Builds, tests, and reports code coverage on push/PR to main.
+# Builds, tests, reports code coverage, and lints formatting.
 
 name: CI
 
@@ -15,6 +15,46 @@ permissions:
   contents: read
 
 jobs:
+  detect-changes:
+    name: Detect changes
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      changes: ${{ steps.filter.outputs.changes }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        fetch-depth: 0
+        persist-credentials: false
+        show-progress: false
+
+    - name: Detect file changes
+      uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
+      id: filter
+      with:
+        filters: |
+          code:
+            - 'src/**'
+            - 'test/**'
+            - 'examples/**'
+            - '**/*.cs'
+            - '**/*.csproj'
+          build:
+            - 'build/**'
+            - 'Directory.Build.props'
+            - 'Directory.Packages.props'
+            - '.github/workflows/**'
+            - '**/*.yml'
+            - '**/*.yaml'
+
+  lint-dotnet-format:
+    needs: detect-changes
+    if: |
+      contains(needs.detect-changes.outputs.changes, 'code')
+      || contains(needs.detect-changes.outputs.changes, 'build')
+    uses: ./.github/workflows/dotnet-format.yml
+
   build-test:
     name: Build & Test
     uses: ./.github/workflows/Component.BuildTest.yml
