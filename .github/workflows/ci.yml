@@ -40,6 +40,8 @@ jobs:
             - 'examples/**'
             - '**/*.cs'
             - '**/*.csproj'
+          packaged-code:
+            - 'src/**'
           build:
             - 'build/**'
             - 'Directory.Build.props'
@@ -47,6 +49,10 @@ jobs:
             - '.github/workflows/**'
             - '**/*.yml'
             - '**/*.yaml'
+          shared:
+            - 'build/**'
+            - 'Directory.Build.props'
+            - 'Directory.Packages.props'
 
   lint-dotnet-format:
     needs: detect-changes
@@ -66,3 +72,11 @@ jobs:
       os-list: '[ "ubuntu-24.04", "windows-2025" ]'
       tfm-list: '[ "net8.0" ]'
     secrets: inherit
+
+  validate-packages:
+    needs: detect-changes
+    if: |
+      contains(needs.detect-changes.outputs.changes, 'packaged-code')
+      || contains(needs.detect-changes.outputs.changes, 'build')
+      || contains(needs.detect-changes.outputs.changes, 'shared')
+    uses: ./.github/workflows/package-validation.yml
