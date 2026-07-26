@@ -3,12 +3,13 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
-    <Description>MongoDbClient instrumentation for OpenTelemetry .NET</Description>
-    <PackageTags>$(PackageTags);MongoDbClient</PackageTags>
+    <Description>Auto-instrumentation for MongoDB.Driver.Core that provides distributed tracing spans and metrics for MongoDB client operations using OpenTelemetry. Captures commands (find, insert, update, delete, etc.), database and collection names, and operation durations. Supports filtering, enrichment, and exception recording.</Description>
+    <PackageTags>$(PackageTags);MongoDbClient;Tracing;Metrics;APM;Observability</PackageTags>
     <Title>OpenTelemetry.Instrumentation.MongoDbClient</Title>
     <Copyright>Copyright 2026 DevComputaria</Copyright>
     <PackageProjectUrl>https://github.com/DevComputaria/OpenTelemetry.Instrumentation.MongoDbClient</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageReleaseNotes>https://github.com/DevComputaria/OpenTelemetry.Instrumentation.MongoDbClient/blob/main/CHANGELOG.md</PackageReleaseNotes>
     <MinVerTagPrefix>Instrumentation.MongoDbClient-</MinVerTagPrefix>
   </PropertyGroup>
 
