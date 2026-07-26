@@ -7,7 +7,7 @@
     <PackageTags>$(PackageTags);MongoDbClient</PackageTags>
     <Title>OpenTelemetry.Instrumentation.MongoDbClient</Title>
     <Copyright>Copyright 2026 DevComputaria</Copyright>
-    <PackageProjectUrl>https://opentelemetry.io/</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/DevComputaria/OpenTelemetry.Instrumentation.MongoDbClient</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <MinVerTagPrefix>Instrumentation.MongoDbClient-</MinVerTagPrefix>
   </PropertyGroup>
