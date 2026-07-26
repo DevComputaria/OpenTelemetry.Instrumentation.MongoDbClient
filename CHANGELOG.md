@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Agent Documentation:**
+  - Created `AGENTS.md` with full project context for AI coding agents
+  - Added `.github/instructions/coding.md`, `testing.md`, `documentation.md` for Copilot instructions
+  - Added `.github/prompts/commit-prompt.md`, `review-prompt.md`, `skill-prompt.md` for AI agents
+  - Updated `.vscode/settings.json` to reference new instruction files
+  - Enabled chat prompt discovery in `.github/prompts/`, `.github/instructions/`, and `docs/`
+
 - **Project Restructuring:**
   - Reorganized directory structure to follow `src/`, `test/`, `examples/`, `build/` layout
   - Added `Directory.Build.props` (root, src, test, examples) with inheritance chain
