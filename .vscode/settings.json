@@ -85,7 +85,10 @@
     "github.copilot.renameSuggestions.triggerAutomatically": true,
     "chat.promptFiles": true, 
     "chat.promptFilesLocations": {
-        "./.prompt": true
+        "./.prompt": true,
+        "./.github/prompts": true,
+        "./.github/instructions": true,
+        "./docs": true
     },
     "chat.mcp.discovery.enabled": true, 
     "chat.mcp.discovery.maxResults": 5,
