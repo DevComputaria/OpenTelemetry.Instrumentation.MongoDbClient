@@ -54,6 +54,6 @@ jobs:
           retention-days: 5
 
       - name: Upload code scanning results
-        uses: github/codeql-action/upload-sarif@3434fbbc53af0fe47685ef3897703b39ef77b5cb # v4.37.1
+        uses: github/codeql-action/upload-sarif@7b6a151fb55e03ce158c75249f8880ea01aabebf # v4.37.1
         with:
           sarif_file: results.sarif
